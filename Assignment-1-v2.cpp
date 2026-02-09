@@ -33,10 +33,10 @@ int main()
     string repeat{"y"};
     double energy_output{};
 
+    std::cout<<"CALCULATION OF PHOTON ENERGY OF A GIVEN ELECTRON TRANSITION"<<std::endl;
+
     while(repeat=="y")
     {
-        std::cout<<"CALCULATION OF PHOTON ENERGY OF A GIVEN ELECTRON TRANSITION"<<std::endl;
-
         std::cout<<"Enter the atomic number of the atom: ";
         std::cin>>atomic_number;
 
@@ -46,10 +46,10 @@ int main()
         std::cout<<"Enter the final quantum number: ";
         std::cin>>final_quantum_number;
 
-        std::cout<<"Enter units for the transition energy ('J' for Joules or 'e' for electron volts): ";
+        std::cout<<"Enter units for the transition energy ('J' for Joules or 'eV' for electron volts): ";
         std::cin>>energy_unit;
 
-
+        energy_output = photon_energy(atomic_number, initial_quantum_number, final_quantum_number);
         if(energy_unit == "J")
         {
             energy_output*=ELECTRON_CHARGE;
