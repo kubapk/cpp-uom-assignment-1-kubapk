@@ -14,6 +14,8 @@ Last updated on XX Feb 2026
 #include<cmath>
 using std::string;
 
+const double ELECTRON_CHARGE = 1.602176634e-19;
+
 double photon_energy(double Z, double n_i, double n_j)
 {
     double energy{};
@@ -24,26 +26,40 @@ double photon_energy(double Z, double n_i, double n_j)
 
 int main()
 {
-    double atomic_number{};
-    double initial_quantum_number{};
-    double final_quantum_number{};
+    int atomic_number{};
+    int initial_quantum_number{};
+    int final_quantum_number{};
     string energy_unit{};
-
-    std::cout<<"CALCULATION OF PHOTON ENERGY OF A GIVEN ELECTRON TRANSITION"<<std::endl;
-    std::cout<<"Enter the atomic number of the atom: ";
-    std::cin>>atomic_number;
-    std::cout<<"Enter the initial quantum number: ";
-    std::cin>>initial_quantum_number;
-    std::cout<<"Enter the final quantum number: ";
-    std::cin>>final_quantum_number;
-    std::cout<<"Enter units for the transition energy ('J' for Joules or 'e' for electron volts): ";
-    std::cin>>energy_unit;
-
-    std::cout<<atomic_number<<" "<<initial_quantum_number<<" "<<final_quantum_number<<" "<<energy_unit<<std::endl;
-    
+    string repeat{y};
     double energy_output{};
-    energy_output = photon_energy(atomic_number, initial_quantum_number, final_quantum_number);
-    std::cout<<energy_output<<std::endl;
+
+    while(repeat=="y")
+    {
+        std::cout<<"CALCULATION OF PHOTON ENERGY OF A GIVEN ELECTRON TRANSITION"<<std::endl;
+
+        std::cout<<"Enter the atomic number of the atom: ";
+        std::cin>>atomic_number;
+
+        std::cout<<"Enter the initial quantum number: ";
+        std::cin>>initial_quantum_number;
+
+        std::cout<<"Enter the final quantum number: ";
+        std::cin>>final_quantum_number;
+
+        std::cout<<"Enter units for the transition energy ('J' for Joules or 'e' for electron volts): ";
+        std::cin>>energy_unit;
+
+        std::cout<<atomic_number<<" "<<initial_quantum_number<<" "<<final_quantum_number<<" "<<energy_unit<<std::endl;
+
+        if(energy_unit == "J")
+        {
+            energy_output*=ELECTRON_CHARGE;
+        }
+        
+        std::cout<<"Calculated photon energy = "<<energy_output<<" "<<energy_unit<<std::endl;
+    }
+
+    
 
     return 0;
 }
