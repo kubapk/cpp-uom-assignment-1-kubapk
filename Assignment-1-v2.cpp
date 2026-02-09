@@ -30,7 +30,7 @@ int main()
     int initial_quantum_number{};
     int final_quantum_number{};
     string energy_unit{};
-    string repeat{y};
+    string repeat{"y"};
     double energy_output{};
 
     while(repeat=="y")
@@ -49,7 +49,6 @@ int main()
         std::cout<<"Enter units for the transition energy ('J' for Joules or 'e' for electron volts): ";
         std::cin>>energy_unit;
 
-        std::cout<<atomic_number<<" "<<initial_quantum_number<<" "<<final_quantum_number<<" "<<energy_unit<<std::endl;
 
         if(energy_unit == "J")
         {
@@ -57,9 +56,12 @@ int main()
         }
         
         std::cout<<"Calculated photon energy = "<<energy_output<<" "<<energy_unit<<std::endl;
-    }
+        
+        std::cout<<std::endl;
+        std::cout<<"Do you want to repeat this calculation (y/n)? ";
+        std::cin>>repeat;
 
-    
+    }
 
     return 0;
 }
