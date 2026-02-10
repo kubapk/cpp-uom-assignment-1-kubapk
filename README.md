@@ -1,11 +1,10 @@
-### PHYS30762
 ### Kuba Kane
-# Assignment 1 - The Bohr Atom
+# PHYS30762 Assignment 1 - The Bohr Atom
 
 ### Program reasoning
  - After testing different inputted values from the user input, there was an issue with decimal values
 
-###
+<br>
 ### Disclosure of Delegation to Generative AI
 The author declares the use of generative AI in the research and coding process. The following tasks were delegated to GAI tools under full human supervision:
 
