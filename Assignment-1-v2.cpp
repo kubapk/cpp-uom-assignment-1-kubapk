@@ -16,18 +16,18 @@ using std::string;
 
 const double ELECTRON_CHARGE = 1.602176634e-19;
 
+
 int valid_int_input()
 {
     int value;
-    std::cin>>value;
 
-    while(true)
+    while(true) //loops until value is returned
     {
         std::cin>>value;
 
         if(std::cin.fail())
         {
-            std::cout<<"Input must be a valid integer. Please try again: "; //Asks the user again to input
+            std::cout<<" > Input must be a valid integer. Please try again: "; //Asks the user again to input
             std::cin.clear(); //Clears the flag of fail
             std::cin.ignore(1000, '\n');  //Ignores the failed input value
         }
@@ -45,12 +45,10 @@ double photon_energy(double Z, double n_i, double n_j)
     return energy;
  }
 
+
 int main()
 {
     //Declaration of variables
-    //int atomic_number{};
-    int initial_quantum_number{};
-    int final_quantum_number{};
     string energy_unit{};
     string repeat{"y"};
     double energy_output{};
@@ -63,10 +61,21 @@ int main()
         int atomic_number = valid_int_input();
 
         std::cout<<"Enter the initial quantum number: ";
-        std::cin>>initial_quantum_number;
+        int initial_quantum_number = valid_int_input();
 
         std::cout<<"Enter the final quantum number: ";
-        std::cin>>final_quantum_number;
+        int final_quantum_number = valid_int_input();
+
+        while(final_quantum_number > initial_quantum_number)
+        {
+            std::cout<<"The final quantum number must be less than the initial quantum number. Enter these again."<<std::endl;
+            std::cout<<" Enter the initial quantum number: ";
+            initial_quantum_number = valid_int_input();
+
+            std::cout<<" Enter the final quantum number: ";
+            final_quantum_number = valid_int_input();
+        }
+
 
         std::cout<<"Enter units for the transition energy ('J' for Joules or 'eV' for electron volts): ";
         std::cin>>energy_unit;
