@@ -16,6 +16,27 @@ using std::string;
 
 const double ELECTRON_CHARGE = 1.602176634e-19;
 
+int valid_int_input()
+{
+    int value;
+    std::cin>>value;
+
+    while(true)
+    {
+        std::cin>>value;
+
+        if(std::cin.fail())
+        {
+            std::cout<<"Input must be a valid integer. Please try again: "; //Asks the user again to input
+            std::cin.clear(); //Clears the flag of fail
+            std::cin.ignore(1000, '\n');  //Ignores the failed input value
+        }
+        else
+            return value;
+    }
+}
+
+
 double photon_energy(double Z, double n_i, double n_j)
 {
     double energy{};
@@ -27,7 +48,7 @@ double photon_energy(double Z, double n_i, double n_j)
 int main()
 {
     //Declaration of variables
-    int atomic_number{};
+    //int atomic_number{};
     int initial_quantum_number{};
     int final_quantum_number{};
     string energy_unit{};
@@ -39,7 +60,7 @@ int main()
     while(repeat=="y")
     {
         std::cout<<"Enter the atomic number of the atom: ";
-        std::cin>>atomic_number;
+        int atomic_number = valid_int_input();
 
         std::cout<<"Enter the initial quantum number: ";
         std::cin>>initial_quantum_number;
@@ -61,14 +82,6 @@ int main()
         std::cout<<std::endl;
         std::cout<<"Do you want to repeat this calculation (y/n)? ";
         std::cin>>repeat;
-
-        while(std::cin.fail()) //While the input (cin) is a fail, i.e. is not an integer since we are storing to an integer variable year
-    {
-        std::cout<<"Sorry your input was not valid, please enter a year: "; //Asks the user again to input
-        std::cin.clear(); //Clears the flag of fail
-        std::cin.ignore(1000, '\n');  //Ignores the failed input value
-        std::cin>>year; //Resets the variable
-    }
     }
 
     return 0;
