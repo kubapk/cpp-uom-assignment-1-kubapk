@@ -25,13 +25,22 @@ int valid_int_input()
     {
         std::cin>>value;
 
-        if(std::cin.fail())
+        if(std::cin.fail() || std::cin.peek() != '\n') //if input invalid or contains extra characters
         {
-            std::cout<<" > Input must be a valid integer. Please try again: "; //Asks the user again to input
+            std::cout<<" Input must be a valid integer. Please try again: "; //Asks the user to input again
             std::cin.clear(); //Clears the flag of fail
-            std::cin.ignore(1000, '\n');  //Ignores the failed input value
+            std::cin.ignore(1000, '\n');  //Skip up to 10000 characters or until a newline is found 
+            std::cin>>value; //Reset variable
+        }
+        else if (value < 0)
+        {
+            std::cout<<" Input cannot be negative. Please try again: ";
+            std::cin.clear(); 
+            std::cin.ignore(1000, '\n'); 
+            std::cin>>value;
         }
         else
+            std::cin.ignore(1000, '\n');
             return value;
     }
 }
@@ -61,8 +70,15 @@ int main()
         std::cout<<"Enter the atomic number of the atom: ";
         int atomic_number = valid_int_input(); 
 
+        while(atomic_number < 0)
+        {
+            std::cout<<" Atomic number cannot be negative. Try again: ";
+            atomic_number = valid_int_input();
+        } 
+
         std::cout<<"Enter the initial quantum number: ";
         int initial_quantum_number = valid_int_input();
+
 
         std::cout<<"Enter the final quantum number: ";
         int final_quantum_number = valid_int_input();
