@@ -1,8 +1,8 @@
 /*
 ________________TITLE____________________
-PHYS30762- Assignment 1 - The Bohr Atom
+PHYS30762 - Assignment 1 - The Bohr Atom
 _________________________________________
-This C++ script calculates transition energy using simple Bohr formula
+This C++ script calculates transition energy using simple Bohr formula.
 
 Created by Kuba Kane (ID: 11019699)
 Created on Mon 9 Feb 2026
@@ -26,6 +26,7 @@ double photon_energy(double Z, double n_i, double n_j)
 
 int main()
 {
+    //Declaration of variables
     int atomic_number{};
     int initial_quantum_number{};
     int final_quantum_number{};
@@ -61,6 +62,13 @@ int main()
         std::cout<<"Do you want to repeat this calculation (y/n)? ";
         std::cin>>repeat;
 
+        while(std::cin.fail()) //While the input (cin) is a fail, i.e. is not an integer since we are storing to an integer variable year
+    {
+        std::cout<<"Sorry your input was not valid, please enter a year: "; //Asks the user again to input
+        std::cin.clear(); //Clears the flag of fail
+        std::cin.ignore(1000, '\n');  //Ignores the failed input value
+        std::cin>>year; //Resets the variable
+    }
     }
 
     return 0;
