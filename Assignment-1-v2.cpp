@@ -57,8 +57,9 @@ int main()
 
     while(repeat=="y")
     {
+        //Store user inputs
         std::cout<<"Enter the atomic number of the atom: ";
-        int atomic_number = valid_int_input();
+        int atomic_number = valid_int_input(); 
 
         std::cout<<"Enter the initial quantum number: ";
         int initial_quantum_number = valid_int_input();
@@ -66,6 +67,7 @@ int main()
         std::cout<<"Enter the final quantum number: ";
         int final_quantum_number = valid_int_input();
 
+        //Loop to reject case where final quantum number > initial quantum number 
         while(final_quantum_number > initial_quantum_number)
         {
             std::cout<<"The final quantum number must be less than the initial quantum number. Enter these again."<<std::endl;
@@ -80,17 +82,36 @@ int main()
         std::cout<<"Enter units for the transition energy ('J' for Joules or 'eV' for electron volts): ";
         std::cin>>energy_unit;
 
+        //Loop to reject strings which are not "J" or "eV"
+        while(energy_unit!="J" && energy_unit!="eV")
+        {
+            std::cout<<" > Units must be 'J' or 'eV'. Please try again: ";
+            std::cin.ignore(1000, '\n');  //Ignores the failed input value
+            std::cin>>energy_unit;
+        }
+
         energy_output = photon_energy(atomic_number, initial_quantum_number, final_quantum_number);
+
+        //Convert units if energy units are J
         if(energy_unit == "J")
         {
             energy_output*=ELECTRON_CHARGE;
         }
         
+        //Print out photon energy
         std::cout<<"Calculated photon energy = "<<energy_output<<" "<<energy_unit<<std::endl;
         
         std::cout<<std::endl;
         std::cout<<"Do you want to repeat this calculation (y/n)? ";
         std::cin>>repeat;
+
+        //Check repeat is "y" or "n"
+        while(repeat!="y" && repeat!="n")
+        {
+            std::cout<<" > Enter only 'y' or 'n'. Try again: ";
+            std::cin.ignore(1000, '\n');
+            std::cin>>repeat;
+        }
     }
 
     return 0;
