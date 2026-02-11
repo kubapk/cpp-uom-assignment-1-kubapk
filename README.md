@@ -5,7 +5,11 @@
 This code was compiled using the in-built build command in VSC.
 
 ### Program reasoning
- - `valid_int_input()` is a function 
+ - `valid_int_input()` was a function introduced to avoid repeating while loops (for the atomic number and quantum numbers). It creates a generic variable whose validity is then checked. This function orginally used `while(true)` and then `if` commands, which broke down when the user entered, for example, "5.5" (where .5 was taken to be the users input on the next run of `valid_int_input()`). To avoid this a `while` loop was used directly. `std::cin.ignore(1000, '\n')` prevents .5 being taken to the next user input.
+
+ - `photon_energy(double Z, double n_i, double n_j)` orginally used `x**5` which does not work in C++, so `pow(x,y)` was used to give x^y.
+
+ - Atomic number and quantum numbers did not need.
 
 
 

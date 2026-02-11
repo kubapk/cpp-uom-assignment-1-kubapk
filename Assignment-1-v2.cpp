@@ -6,7 +6,7 @@ This C++ script calculates transition energy using simple Bohr formula.
 
 Created by Kuba Kane (ID: 11019699)
 Created on Mon 9 Feb 2026
-Last updated on Tue 10 Feb 2026
+Last updated on Wed 11 Feb 2026
 */
 
 #include<iostream>
@@ -14,19 +14,22 @@ Last updated on Tue 10 Feb 2026
 #include<cmath>
 using std::string;
 
+//Constant declarations
 const double ELECTRON_CHARGE = 1.602176634e-19;
 
-
+//Function to take a generic integer input from the user and check it is an integer and non-negative
 int valid_int_input()
 {
     int value;
     std::cin>>value;
 
-    while(std::cin.fail() || value <= 0 || std::cin.peek() != '\n') //While the input (cin) is a fail, i.e. is not an integer since we are storing to an integer variable year
+    while(std::cin.fail() || value <= 0 || std::cin.peek() != '\n') //While the input (cin) is a fail (non-integer), or 
+    //while it is less than / equal to 0, or while there is extra text after the integer (including decimals)
+    //the last condition is checked using the peek() function of the cin object
     {
         std::cout<<" Input must be a valid positive integer. Please try again: "; //Asks the user again to input
         std::cin.clear(); //Clears the flag of fail
-        std::cin.ignore(1000, '\n');  //Ignores the failed input value
+        std::cin.ignore(1000, '\n');  //Ignores the failed input value (up to 1000 characters entered)
         std::cin>>value; //Resets the variable
     }
 
@@ -34,7 +37,7 @@ int valid_int_input()
     
 }
 
-
+//Function to calculate the photon energy, given the atomic number and the initial and final quantum numbers
 double photon_energy(double Z, double n_i, double n_j)
 {
     double energy{};
@@ -106,7 +109,7 @@ int main()
         std::cout<<"Do you want to repeat this calculation (y/n)? ";
         std::cin>>repeat;
 
-        //Check repeat is "y" or "n"
+        //Loop to ask for input again if repeat is not "y" or "n"
         while(repeat!="y" && repeat!="n")
         {
             std::cout<<" Enter only 'y' or 'n'. Try again: ";
