@@ -1,8 +1,11 @@
 ### Kuba Kane
 # PHYS30762 Assignment 1 - The Bohr Atom
 
+### Guidlines
+This code was compiled using the in-built build command in VSC.
+
 ### Program reasoning
- - After testing different inputted values from the user input, there was an issue with decimal values
+ - `valid_int_input()` is a function 
 
 
 
