@@ -84,8 +84,8 @@ int main()
         std::cout<<"Enter units for the transition energy ('J' for Joules or 'eV' for electron volts): ";
         std::cin>>energy_unit;
 
-        //Loop to reject strings which are not "J" or "eV"
-        while(energy_unit!="J" && energy_unit!="eV")
+        //Loop to reject strings which are not "J" or "eV" (or contains extra characters)
+        while(energy_unit!="J" && energy_unit!="eV" || std::cin.peek() != '\n')
         {
             std::cout<<" Units must be 'J' or 'eV'. Please try again: ";
             std::cin.ignore(1000, '\n');  //Ignores the failed input value
@@ -103,14 +103,21 @@ int main()
         
         //Print out photon energy
         std::cout<<"Calculated photon energy = "<<energy_output<<" "<<energy_unit<<std::endl;
+
+        //Message if final quantum number = initial quantum number
+        if(final_quantum_number == initial_quantum_number)
+        {
+            std::cout<<" Note: Initial and final quantum number entered were equal, and so "
+            <<"transition is not physically valid."<<std::endl;
+        }
         
         //Ask to repeat calculation
         std::cout<<std::endl;
         std::cout<<"Do you want to repeat this calculation (y/n)? ";
         std::cin>>repeat;
 
-        //Loop to ask for input again if repeat is not "y" or "n"
-        while(repeat!="y" && repeat!="n")
+        //Loop to ask for input again if repeat is not "y" or "n" (or contains extra characters)
+        while(repeat!="y" && repeat!="n" || std::cin.peek() != '\n')
         {
             std::cout<<" Enter only 'y' or 'n'. Try again: ";
             std::cin.ignore(1000, '\n');
