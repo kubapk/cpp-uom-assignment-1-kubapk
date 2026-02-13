@@ -6,7 +6,7 @@ This C++ script calculates transition energy using simple Bohr formula.
 
 Created by Kuba Kane (ID: 11019699)
 Created on Mon 9 Feb 2026
-Last updated on Wed 11 Feb 2026
+Last updated on Fri 13 Feb 2026
 */
 
 #include<iostream>
@@ -38,7 +38,7 @@ int valid_int_input()
 }
 
 //Function to calculate the photon energy, given the atomic number and the initial and final quantum numbers
-double photon_energy(double Z, double n_i, double n_j)
+double photon_energy(int Z, int n_i, int n_j)
 {
     double energy{};
     energy = 13.6 * (pow(Z, 2)) * ((1.0/pow(n_j, 2))-(1.0/pow(n_i, 2)));

@@ -2,7 +2,7 @@
 # PHYS30762 Assignment 1 - The Bohr Atom
 
 ### User guidelines
-This code was compiled using the in-built build command in VSC.
+This code was compiled using the in-built build command in VSC. The file with the code is "Assignment-1.cpp"
 
 ### Program reasoning
  - `valid_int_input()` was a function introduced to avoid repeating while loops (for the atomic number and quantum numbers). It creates a generic variable whose validity is then checked. This function orginally used `while(true)` and then `if` commands, which broke down when the user entered, for example, "5.5" (where .5 was taken to be the users input on the next run of `valid_int_input()`). To avoid this a `while` loop was used directly. `std::cin.ignore(1000, '\n')` prevents .5 being taken to the next user input.
